@@ -11,6 +11,16 @@ import Home from './components/Home';
 import NotFound from './components/NotFound';
 import {Route, Switch} from 'react-router-dom';
 
+import ProductDetail from './pages/ProductDetail';
+
+import ReduxCounter from './containers/ReduxCounter';
+
+
+import protectedContentWrapper from './components/ProtectedContent';
+ 
+
+const ProtectedCounter = protectedContentWrapper(Counter);
+
 
 // Component names should be CamelCase
 // functional component
@@ -43,9 +53,16 @@ class App extends React.Component {
                         <Route path="/" exact component={Home} />
                         
                         <Route path="/counter"  
-                                render= { (props) => <Counter start={100}  {...props} />}  />
+                                render= { (props) => <ProtectedCounter start={100}  {...props} />}  />
     
                         <Route path="/cart" component={Cart} />
+
+                        <Route path="/product-detail"
+                                component={ProductDetail} />
+
+                        <Route path="/redux-counter"
+                                component={ReduxCounter} />
+
                         <Route path="/about" 
                                 render={ () => (
                                        <div>

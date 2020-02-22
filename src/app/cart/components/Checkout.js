@@ -17,7 +17,7 @@ export default class Checkout extends React.Component {
     handleChange = (event) => {
         // event object passed by event system
         console.log('handlechange', event);
-        const target = event.target; // input real dom
+        const target = event.target; // input/select real dom
         const {name, value} = target;
         console.log(name, value); 
 

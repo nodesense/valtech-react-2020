@@ -5,6 +5,8 @@ import {NavLink} from 'react-router-dom';
 // HoC, inject history, location, match into props
 import {withRouter} from 'react-router-dom';
 
+import store from '../store';
+
 // props are passed as first argument
 const Header = (props) => {
      console.log('Header func props', props);
@@ -37,9 +39,25 @@ const Header = (props) => {
                                    activeClassName="success">
                 Counter
             </NavLink>
+
+
+            <NavLink to="/product-detail" className="button"
+                                   activeClassName="success">
+                Detail
+            </NavLink>
+ 
+
+            <NavLink to="/redux-counter" className="button"
+                                   activeClassName="success">
+                Redux Counter
+            </NavLink>
  
             <button onClick={ () => props.history.push('/cart') }>
                 Cart thro code
+            </button>
+
+            <button onClick={ () => store.dispatch({type: 'AUTH.LOGGED_OUT'}) }>
+                Logout
             </button>
             
             <hr />
