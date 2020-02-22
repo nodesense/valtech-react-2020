@@ -205,3 +205,68 @@ REDUX
                 then it passes the props from redux state /mapStateToprops
             container passes the action methods to the component as props
                 the actions shall contain dispatch
+
+
+
+Day-4
+
+
+Redux Thunk
+Redux Saga
+Unit Test Cases
+
+
+https://github.com/nodesense/restful-server
+
+open new command prompt
+
+git clone https://github.com/nodesense/restful-server
+cd restful-server
+npm install
+npm start
+
+check browser localhost:7070
+
+
+
+Redux 
+    Syncronus flow
+
+    dispatch
+        middlewares
+        reducers
+        subscribe..
+
+Async
+    API Call [Async] - IO
+
+Business Logic
+    Reducer/Data Handling - sync /used in entier app
+    mapDispatchToProps/Fucntions - sync/async - per component
+    actions - action creators - sync/used in entire app
+
+
+--
+    middleware
+        take action as object, forward to next
+    actions/action creators
+        take input parameter, return action object
+
+Thunk middleware
+    write Async operations in redux
+
+    write an action creator that returns a function
+             instead object
+
+    action creator perform the async IO/Busines logic
+    Dispatch the action function to middleware
+
+    thunk middleware, check the action type
+        typeof action === 'function':
+            doesn't forward to next
+            call teh action function (dispatch,getState)
+
+        typeof action === 'object':
+            next(action)
+
+            

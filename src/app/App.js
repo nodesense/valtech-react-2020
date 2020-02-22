@@ -14,9 +14,10 @@ import {Route, Switch} from 'react-router-dom';
 import ProductDetail from './pages/ProductDetail';
 
 import ReduxCounter from './containers/ReduxCounter';
-
+import ProductList from './containers/ProductList';
 
 import protectedContentWrapper from './components/ProtectedContent';
+import About from './components/About';
  
 
 const ProtectedCounter = protectedContentWrapper(Counter);
@@ -55,7 +56,11 @@ class App extends React.Component {
                         <Route path="/counter"  
                                 render= { (props) => <ProtectedCounter start={100}  {...props} />}  />
     
+                        <Route path="/about" component={About} />
+                        
                         <Route path="/cart" component={Cart} />
+
+                        <Route path="/products" component={ProductList} />
 
                         <Route path="/product-detail"
                                 component={ProductDetail} />

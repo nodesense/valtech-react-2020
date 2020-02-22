@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test for footer footer test 1`] = `
+<div>
+  <hr />
+  <p>
+    Copyrights @2020, 
+    Product app
+    , 
+    Valtech
+     
+  </p>
+  <div>
+    <span>
+      0
+      .
+      IN
+       
+    </span>
+    <span>
+      1
+      .
+      USA
+       
+    </span>
+  </div>
+  <button
+    className="green"
+  >
+    Contact Us
+  </button>
+</div>
+`;

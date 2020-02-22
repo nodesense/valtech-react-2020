@@ -8,6 +8,17 @@ import {counterReducer} from './state/reducers/counterReducer';
 import {loggerMiddleware} from  './state/middlewares/loggerMiddleware';
 import {cacheMiddleware} from './state/middlewares/cacheMiddleware';
 
+import {productReducer} from './state/reducers/productReducer';
+import thunk from 'redux-thunk';
+
+import createSagaMiddleware from 'redux-saga'
+
+import {requestProductSaga, 
+        deleteSaga, 
+        deleteAndReloadProductsSaga} from './state/saga';
+
+const sagaMiddleware = createSagaMiddleware();
+
 console.log('store initialize');
 
 //store.js
@@ -15,17 +26,25 @@ console.log('store initialize');
 const rootReducer = combineReducers({
     // state : reducer func
     auth: authReducer,
-    counter: counterReducer
+    counter: counterReducer,
+    productReducer,  // ==> productReducer: productReducer
+                     // getState().productReducer.products
 
     // cartItems: cartReducer,
 })
+
 
 // very first time, store calls reducer to initialize 
 // default state value
 const store = createStore(rootReducer, 
                           applyMiddleware(loggerMiddleware, 
-                                          cacheMiddleware));
+                                          thunk,
+                                          cacheMiddleware, 
+                                          sagaMiddleware));
 
+sagaMiddleware.run(requestProductSaga)
+sagaMiddleware.run(deleteSaga)
+sagaMiddleware.run(deleteAndReloadProductsSaga)
 
 export default store;
 
